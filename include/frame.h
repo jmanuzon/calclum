@@ -1,5 +1,5 @@
 #ifndef __FRAME_H__
-#define __FRAME_H_
+#define __FRAME_H__
 #pragma once
 
 #include <memory>

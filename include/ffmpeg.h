@@ -1,5 +1,5 @@
 #ifndef __FFMPEG_H__
-#define __FMPEG_H__
+#define __FFMPEG_H__
 #pragma once
 
 extern "C"
