@@ -2,16 +2,49 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "GCC 14.1.0",
-            "displayName": "GCC 14.1.0",
+            "name": "debug",
+            "displayName": "debug",
             "description": "Using compilers: C = C:\\msys64\\ucrt64\\bin\\gcc.exe, CXX = C:\\msys64\\ucrt64\\bin\\g++.exe",
-            "binaryDir": "${sourceDir}/build/",
+            "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
                 "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
                 "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
                 "CMAKE_BUILD_TYPE": "Debug"
+            },
+            "environment": {
+                "CFLAGS": "/fsanitize=address",
+                "CXXFLAGS": "/fsanitize=address"
             }
+        },
+
+        {
+            "name": "release",
+            "displayName": "release",
+            "description": "Using compilers: C = C:\\msys64\\ucrt64\\bin\\gcc.exe, CXX = C:\\msys64\\ucrt64\\bin\\g++.exe",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+                "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "description": "debug",
+            "displayName": "debug",
+            "configurePreset": "debug",
+             "configuration": "debug"
+        },
+        {
+            "name": "release",
+            "description": "release",
+            "displayName": "release",
+            "configurePreset": "release",
+            "configuration": "release"
         }
     ]
 }

@@ -12,11 +12,12 @@ _threadpool{std::make_unique<ctpl::thread_pool>(threadcount)}
 {
 }
 
-int calclum::calc(int id, const std::string& filename, const video& video, container& _container)
+int calclum::calc(int id, const std::string& filename, container& _container)
 {
     std::cout << "Started processing video:" <<  filename << " using threadid:" << id << '\n';
 
-    auto frames = video.getFrames();
+    video vid(filename);
+    auto frames = vid.getFrames();
     if(frames.size() <= 0)
     {
         return 1;
@@ -96,12 +97,10 @@ int calclum::calc(int id, const std::string& filename, const video& video, conta
 
 int calclum::run()
 {
-    //video file, queue computation of luminance
-    for(auto i = 0; i < _files.size(); ++i)
+    //process the video instance in a new thread
+    for(const auto& file : _files)
     {
-        const std::string& file = _files[i];
-        video v(file);
-        _threadpool->push(&calclum::calc, std::ref(file), std::move(v), std::ref(_container));
+        _threadpool->push(&calclum::calc, std::ref(file), std::ref(_container));
     }
 
     //wait for all the work to finish

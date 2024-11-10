@@ -20,7 +20,7 @@ public:
     AVFrame* get() const {return _pFrame.get();}
 
 private:
-    std::shared_ptr<AVFrame> _pFrame; 
+    std::unique_ptr<AVFrame, DeleterPtr<AVFrame, void, av_frame_free>> _pFrame; 
 };
 
 #endif

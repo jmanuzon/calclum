@@ -20,7 +20,7 @@ class calclum
     private:
     
     private:
-        static int calc(int, const std::string&, const video&, container& _container);
+        static int calc(int, const std::string&, container& _container);
         
     private:
         const std::vector<std::string>& _files{};

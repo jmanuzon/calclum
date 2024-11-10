@@ -24,8 +24,8 @@ class video
         std::vector<frame> getFrames() const;
 
     private:
-         std::shared_ptr<AVFormatContext> _pFormatContext;
-         std::shared_ptr<AVCodecContext> _pCodecContext;
+         std::unique_ptr<AVFormatContext, DeleterPtr<AVFormatContext, void, avformat_close_input>> _pFormatContext;
+         std::unique_ptr<AVCodecContext, DeleterPtr<AVCodecContext, void, avcodec_free_context>> _pCodecContext;
          int _index{-1};
 };
 

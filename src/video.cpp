@@ -6,8 +6,8 @@
 
 video::video(const std::string& path)
 {
-    _pFormatContext = std::shared_ptr<AVFormatContext>(avformat_alloc_context(),
-        DeleterPtr<AVFormatContext, void, avformat_close_input>());
+    _pFormatContext = std::unique_ptr<AVFormatContext, DeleterPtr<AVFormatContext, void, avformat_close_input>>
+    { avformat_alloc_context() };
 
     if(!_pFormatContext)
     {
@@ -60,8 +60,8 @@ video::video(const std::string& path)
         throw std::invalid_argument("not a video stream.");
     }     
 
-    _pCodecContext = std::shared_ptr<AVCodecContext>(avcodec_alloc_context3(pCodec),
-    DeleterPtr<AVCodecContext, void, avcodec_free_context>());
+    _pCodecContext = std::unique_ptr<AVCodecContext, DeleterPtr<AVCodecContext, void, avcodec_free_context>>
+     { avcodec_alloc_context3(pCodec) };
 
     if (!_pCodecContext)
     {

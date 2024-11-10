@@ -3,8 +3,8 @@
 
 frame::frame()
 {
-    _pFrame = std::shared_ptr<AVFrame>(av_frame_alloc(),
-    DeleterPtr<AVFrame, void, av_frame_free>());
+    _pFrame = std::unique_ptr<AVFrame, DeleterPtr<AVFrame, void, av_frame_free>>
+    { av_frame_alloc() };
 
     if(!_pFrame)
     {
