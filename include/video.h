@@ -9,6 +9,8 @@
 #include "ffmpeg.h"
 #include "helper.h"
 #include "frame.h"
+#include "formatcontext.h"
+#include "codeccontext.h"
 
 class video
 {
@@ -24,9 +26,10 @@ class video
         std::vector<frame> getFrames() const;
 
     private:
-         std::unique_ptr<AVFormatContext, DeleterPtr<AVFormatContext, void, avformat_close_input>> _pFormatContext;
-         std::unique_ptr<AVCodecContext, DeleterPtr<AVCodecContext, void, avcodec_free_context>> _pCodecContext;
-         int _index{-1};
+        const std::string _path{};
+        std::unique_ptr<formatcontext> _pFormatContextWrapper{};
+        std::unique_ptr<codeccontext> _pCodecContextWrapper{};
+        int _index{-1};
 };
 
 #endif

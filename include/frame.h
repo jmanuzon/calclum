@@ -17,7 +17,7 @@ public:
     frame& operator=(frame&&) = default;
 
 public:
-    AVFrame* get() const {return _pFrame.get();}
+    AVFrame* getPtr() const {return _pFrame.get();}
 
 private:
     std::unique_ptr<AVFrame, DeleterPtr<AVFrame, void, av_frame_free>> _pFrame; 

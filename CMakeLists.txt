@@ -6,6 +6,9 @@ main.cpp
 src/calclum.cpp
 src/video.cpp
 src/frame.cpp
+src/formatcontext.cpp
+src/codeccontext.cpp
+src/packet.cpp
 )
 
 set(HEADERS
@@ -14,8 +17,11 @@ include/calclum.h
 include/ctpl_stl.h
 include/ffmpeg.h
 include/video.h
+include/formatcontext.h
+include/codeccontext.h
 include/frame.h
 include/container.h
+include/packet.h
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})

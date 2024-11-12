@@ -11,13 +11,8 @@
                 "CMAKE_C_COMPILER": "C:/msys64/ucrt64/bin/gcc.exe",
                 "CMAKE_CXX_COMPILER": "C:/msys64/ucrt64/bin/g++.exe",
                 "CMAKE_BUILD_TYPE": "Debug"
-            },
-            "environment": {
-                "CFLAGS": "/fsanitize=address",
-                "CXXFLAGS": "/fsanitize=address"
             }
         },
-
         {
             "name": "release",
             "displayName": "release",
@@ -37,14 +32,14 @@
             "description": "debug",
             "displayName": "debug",
             "configurePreset": "debug",
-             "configuration": "debug"
+            "configuration": "Debug"
         },
         {
             "name": "release",
             "description": "release",
             "displayName": "release",
             "configurePreset": "release",
-            "configuration": "release"
+            "configuration": "Release"
         }
     ]
 }

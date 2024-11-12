@@ -32,15 +32,15 @@ int calclum::calc(int id, const std::string& filename, container& _container)
 
     for(auto i = 0; i < frames.size(); ++i)
     {
-        auto height = frames[i].get()->height;
-        auto width = frames[i].get()->width;
+        auto height = frames[i].getPtr()->height;
+        auto width = frames[i].getPtr()->width;
         auto framesize = height * width;
 
         for(auto y = 0; y < height; ++y)
         {
             for(auto x = 0; x < width; ++x)
             {
-                auto lum = frames[i].get()->data[0][y * frames[i].get()->linesize[0] + x];
+                auto lum = frames[i].getPtr()->data[0][y * frames[i].getPtr()->linesize[0] + x];
                 if(minL != 0)
                     minL = std::min(minL, lum);
                 if(maxL != 255)
